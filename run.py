@@ -7,7 +7,7 @@ from model_simulation import Simulation
 # - Leap frog method for integration
 # - Room size
 # - Room layout
-sim = Simulation(num_individuals=100, num_steps=700, method="leap_frog", room_size=40, room="square_room_with_1_exit")
+sim = Simulation(num_individuals=50, num_steps=700, method="leap_frog", room_size=25, room="square_room_with_1_exit")
 
 # Fill the simulation room's spawn zone with random individuals
 sim.fill_room()
