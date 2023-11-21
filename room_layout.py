@@ -13,7 +13,7 @@ class Room:
             self.wall_shear = False  # No walls in this configuration
             self.door_size = room_size / 15  # Width of the exit
             self.destination = np.array([[-0.5, room_size / 2]])  # Position of the destination
-            self.num_walls = 5  # Number of walls in the room.
+            self.number_of_walls = 5  # Number of walls in the room.
             self.walls = np.array([[[0, 0], [0, room_size / 2 - self.door_size / 2]],  # Wall coordinates
                                   [[0, room_size / 2 + self.door_size / 2], [0, room_size]],  
                                   [[0, room_size], [room_size, room_size]],             

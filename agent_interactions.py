@@ -239,7 +239,7 @@ class Differential_Equation:
             e = self.nearest_path(temp_wall, t_or_f, point, wall_norm, r_i, i)
         return e
 
-    # take the nearest path if one agents has to overtake a wall
+    # take the nearest path if one agent has to overtake a wall
     def nearest_path(self, temp_wall, t_or_f, point, wall_norm, r_i, i):
         """returns an 1D-array, the normalized i-agent vector direction in case
            of a wall between the door and the agents
