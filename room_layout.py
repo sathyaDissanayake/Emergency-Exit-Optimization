@@ -11,7 +11,7 @@ class Room:
         if room == "square_room_with_1_exit":
             # Configuration for a square room with a single exit
             self.wall_shear = False  # No walls in this configuration
-            self.door_size = room_size / 15  # Width of the exit
+            self.door_size = room_size / 10  # Width of the exit
             self.destination = np.array([[-0.5, room_size / 2]])  # Position of the destination
             self.number_of_walls = 5  # Number of walls in the room.
             self.walls = np.array([[[0, 0], [0, room_size / 2 - self.door_size / 2]],  # Wall coordinates
