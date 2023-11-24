@@ -22,7 +22,7 @@ This repository contains the source code, documentation, and other resources rel
 Follow below instructions to get a copy of the project and run it on a local machine.
 
 ### Prerequisites
-List the software and tools required to run the project
+Below are required to run the project
 - Python 3.6
 - Python libraries
   - numpy
