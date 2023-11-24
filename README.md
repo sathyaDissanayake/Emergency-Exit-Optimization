@@ -6,23 +6,17 @@ The simulation of the model focuses on the emergency exiting scenario in diverse
 This repository contains the source code, documentation, and other resources related to the project.
 
 ## Features
-**room_layout.py:**
-The script defines a "Room" class for simulating diverse room structures, incorporating features like door size, wall shear, destination, agent spawn area, and the number of walls. Numerical operations from "Numpy" are utilized to design various room types, allowing easy customization for different evacuation scenarios.
+**room_layout.py:** Implements a "Room" class using Numpy to simulate varied room structures, allowing customization for different evacuation scenarios.
 
-**differential_equation_solver.py:**
-The code features a "leap_frog" function for simulating agent escape dynamics within a room, tracking positions, velocities, and accelerations over multiple simulation steps. It monitors the number of escaped agents at each time step, offering insights into evacuation effectiveness and bottleneck influences. Key parameters include initial positions, velocities, force functions, time step size, and room characteristics.
+**differential_equation_solver.py:** Features a "leap_frog" function for simulating agent escape dynamics, tracking positions, velocities, and accelerations, with key parameters influencing evacuation effectiveness.
 
-**agent_interactions.py:**
-The "Differential_Equation" class models agent movement dynamics, including interactions with walls and other agents, calculating accelerations based on various forces. Key parameters encompass the number of individuals, room size, time steps, and physical characteristics of agents such as weight, velocity, and radius. The class defines methods for force calculations between agents and walls, governing the overall dynamics.
+**agent_interactions.py:** Defines a "Differential_Equation" class modeling agent dynamics, calculating accelerations based on forces between agents and walls.
 
-**display-model.py:**
-The script includes functions "display_events" and "display_graphs" using Pygame for visualizing simulation events and graphs. The former simulates events, drawing individuals, walls, destinations, and escape information. The latter displays graphs illustrating the number of people escaped over time, those experiencing high forces, and forces on a random agent over time.
+**display_model.py:** Utilizes Pygame to visualize simulation events and graphs, with functions displaying individual movements, walls, destinations, and key graphs.
 
-**model_simulation.py:**
-The "Simulation" class in the code simulates agent movements and interactions in an evacuation environment, considering parameters like the number of individuals, simulation steps, integration method, time step, velocity factor, room layout, and size. It enables customization for various experiments by adjusting these parameters.
+**model_simulation.py:** Introduces a "Simulation" class to simulate agent movements and interactions, customizable for various experiments by adjusting parameters.
 
-**run.py:**
-The code orchestrates and executes a simulation of agents in a confined environment using the leapfrog integration method, visualizing results with Pygame. Users can customize parameters such as the number of agents, simulation steps, and room layout to adapt the simulation for different scenarios.
+**run.py:** Sets up and runs a simulation of agents in a confined environment, utilizing the leapfrog method and Pygame for visualization, with customizable parameters for different scenarios.
 
 ## Getting Started
 Follow below instructions to get a copy of the project and run it on a local machine.
