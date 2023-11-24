@@ -32,7 +32,7 @@ Below are required to run the project
 ### Installation
 1. Clone the repository to your local machine:
    ```sh
-   git clone https://github.com/your-username/Emergency-Exit-Optimization.git
+   git clone https://github.com/sathyaDissanayake/Emergency-Exit-Optimization.git
 
 2. Install python libraries listed in the requirements.txt
 
