@@ -22,39 +22,6 @@ class Room:
                                   
             self.spawn_zone = np.array([[room_size / 2, room_size - 1], [1, room_size - 1]])  # Agent spawn zone
 
-        if room == "rectangular_room_with_1_exit":
-            # Configuration for a rectangular room with a single exit
-            self.wall_shear = False  # No walls in this configuration
-            self.door_size = room_size / 15  # Width of the exit
-            self.room_length = room_size  # Length of the room
-            self.room_width = room_size / 5  # Width of the room
-            self.destination = np.array([[-0.5, self.room_width / 2]])  # Position of the destination
-            self.number_of_walls = 5  # Number of walls in the room
-            self.walls = np.array([[[0, 0], [0, self.room_width / 2 - self.door_size / 2]],  # Wall coordinates
-                                  [[0, self.room_width / 2 + self.door_size / 2], [0, self.room_width]],    
-                                  [[0, self.room_width], [self.room_length, self.room_width]],           
-                                  [[self.room_length, self.room_width], [self.room_length, 0]],            
-                                  [[self.room_length, 0], [0, 0]]])     
-                                  
-            self.spawn_zone = np.array([[1, self.room_length - 1], [1, self.room_width - 1]])  # Agent spawn zone
-
-        if room == "rectangular_room_with_2_exits":
-            # Configuration for a rectangular room with two exits
-            self.wall_shear = False  # No walls in this configuration
-            self.door_size = room_size / 15  # Width of the exits
-            self.room_length = room_size  # Length of the room
-            self.room_width = room_size / 5  # Width of the room
-            self.destination = np.array([[-0.5, self.room_width / 2], [self.room_length + 0.5, self.room_width / 2]])  # Positions of the destinations
-            self.number_of_walls = 6  # Number of walls in the room
-            self.walls = np.array([[[0, 0], [0, self.room_width / 2 - self.door_size / 2]],  # Wall coordinates
-                                  [[0, self.room_width / 2 + self.door_size / 2], [0, self.room_width]],  
-                                  [[0, self.room_width], [self.room_length, self.room_width]],             
-                                  [[self.room_length, self.room_width], [self.room_length, self.room_width / 2 + self.door_size / 2]],
-                                  [[self.room_length, self.room_width / 2 - self.door_size / 2], [self.room_length, 0]],                 
-                                  [[self.room_length, 0], [0, 0]]])
-                                  
-            self.spawn_zone = np.array([[1, self.room_length - 1], [1, self.room_width - 1]])  # Agent spawn zone
-
         if room == "square_room_with_1_exit_1_additional_wall":
             # Configuration for a square room with one exit and an additional wall
             self.wall_shear = True  # Walls are present in this configuration
@@ -70,21 +37,57 @@ class Room:
                                   
             self.spawn_zone = np.array([[room_size / 2, room_size - 1], [1, room_size - 1]])  # Agent spawn zone
 
-        if room == "square_room_with_1_exit_2_additional_walls":
-            # Configuration for a square room with one exit and two additional walls
+        if room == "square_room_with_2_exits":
+            # Configuration for a square room with a single exit
+            self.wall_shear = False  # No walls in this configuration
+            self.door_size = room_size / 15  # Width of the exit
+            self.destination = np.array([[-0.5, self.room_size / 2], [self.room_size + 0.5, self.room_size / 2]])  # Positions of the destinations
+            self.number_of_walls = 6  # Number of walls in the room
+            self.walls = np.array([[[0, 0], [0, self.room_size / 2 - self.door_size / 2]],  # Wall coordinates
+                                   [[0, self.room_size / 2 + self.door_size / 2], [0, self.room_size]],
+                                   [[0, self.room_size], [self.room_size, self.room_size]],
+                                   [[self.room_size, self.room_size],
+                                    [self.room_size, self.room_size / 2 + self.door_size / 2]],
+                                   [[self.room_size, self.room_size / 2 - self.door_size / 2],
+                                    [self.room_size, 0]],
+                                   [[self.room_size, 0], [0, 0]]])
+
+            self.spawn_zone = np.array([[1, room_size - 1], [1, room_size - 1]])  # Agent spawn zone
+
+        if room == "square_room_with_2_exits_1_additional_wall_1":
+            # Configuration for a square room with one exit and an additional wall
             self.wall_shear = True  # Walls are present in this configuration
             self.door_size = room_size / 15  # Width of the exit
             self.destination = np.array([[-0.5, room_size / 2]])  # Position of the destination
-            self.number_of_walls = 7  # Number of walls in the room.
-            self.walls = np.array([[[0, 0], [0, room_size / 2 - self.door_size / 2]],  # Wall coordinates
-                                  [[0, room_size / 2 + self.door_size / 2], [0, room_size]],  
-                                  [[0, room_size], [room_size, room_size]],             
-                                  [[room_size, room_size], [room_size, 0]],             
-                                  [[room_size, 0], [0, 0]],                             
-                                  [[9/25 * room_size, room_size * 0.15], [5.5/25 * room_size, room_size * 0.4]],  # Wall coordinates
-                                  [[5.5/25 * room_size, room_size * 0.6], [9/25 * room_size, room_size * 0.85]]])  # Wall coordinates
-                                  
-            self.spawn_zone = np.array([[room_size / 2, room_size - 1], [1, room_size - 1]])  # Agent spawn zone
+            #self.destination = np.array([[room_size + 0.5, room_size / 2], [-0.5, room_size / 2]])
+            self.number_of_walls = 7  # Number of walls in the room
+            self.walls = np.array([[[0, 0], [0, self.room_size / 2 - self.door_size / 2]],  # Wall coordinates
+                                   [[0, self.room_size / 2 + self.door_size / 2], [0, self.room_size]],
+                                   [[0, self.room_size], [self.room_size, self.room_size]],
+                                   [[self.room_size, self.room_size], [self.room_size, self.room_size / 2 + self.door_size / 2]],
+                                   [[self.room_size, self.room_size / 2 - self.door_size / 2], [self.room_size, 0]],
+                                   [[self.room_size, 0], [0, 0]],
+                                   [[self.room_size / 4, self.room_size * 0.3], [self.room_size / 4, self.room_size * 0.7]]])
+
+            self.spawn_zone = np.array([[room_size / 2, room_size - 1], [1, room_size - 1]])   # Agent spawn zone
+
+        if room == "square_room_with_2_exits_1_additional_wall_2":
+            # Configuration for a square room with one exit and an additional wall
+            self.wall_shear = True  # Walls are present in this configuration
+            self.door_size = room_size / 15  # Width of the exit
+            #self.destination = np.array([[-0.5, room_size / 2]])  # Position of the destination
+            #self.destination = np.array([[room_size + 0.5, room_size / 2]])
+            self.destination = np.array([[-0.5, self.room_size / 2], [self.room_size + 0.5, self.room_size / 2]])
+            self.number_of_walls = 7  # Number of walls in the room
+            self.walls = np.array([[[0, 0], [0, self.room_size / 2 - self.door_size / 2]],  # Wall coordinates
+                                   [[0, self.room_size / 2 + self.door_size / 2], [0, self.room_size]],
+                                   [[0, self.room_size], [self.room_size, self.room_size]],
+                                   [[self.room_size, self.room_size], [self.room_size, self.room_size / 2 + self.door_size / 2]],
+                                   [[self.room_size, self.room_size / 2 - self.door_size / 2], [self.room_size, 0]],
+                                   [[self.room_size, 0], [0, 0]],
+                                   [[self.room_size / 4, self.room_size * 0.3], [self.room_size / 4, self.room_size * 0.7]]])
+
+            self.spawn_zone = np.array([[room_size / 2, room_size - 1], [1, room_size - 1]])   # Agent spawn zone
 
     def get_wall(self, n):
         # Get the coordinates of the nth wall
