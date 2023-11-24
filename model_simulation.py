@@ -6,32 +6,37 @@ from display_model import display_events
 from display_model import display_graph
 from room_layout import Room
 import differential_equation_solver
-from differential_equation_solver import leap_frog
+# from differential_equation_solver import leap_frog
 
 class Simulation:
-    def __init__(self, num_individuals, num_steps, method="leap_frog", tau=0.1, v_des=1.5, room="square_room_with_1_exit", room_size=25):
+    def __init__(self, num_individuals, num_steps, method="leap_frog", time_step=0.1, velocity_factor=1.25, room="square_room_with_1_exit", room_size=25):
         # Initialization of simulation parameters and agent characteristics
-        std_deviation = 0.07  # Standard deviation used for generating variation in agent size and weight
+        std_deviation = 0.05  # Standard deviation used for generating variation in agent size and weight
         variation = np.random.normal(loc=1, scale=std_deviation, size=(1, num_individuals))
 
         # Constants
         self.L = room_size  # Size of the simulation room
         self.N = num_individuals  # Number of individuals/agents in the simulation
-        self.tau = tau  # Time step for the simulation
+        self.time_step = time_step  # Time step for the simulation
         self.num_steps = num_steps  # Number of simulation steps
 
         # Agent information
-        self.radii = 0.4 * (np.ones(self.N) * variation).squeeze()  # Radii of agents
-        self.v_des = v_des * np.ones(self.N)  # Desired velocity of agents
-        self.m = 80 * (np.ones(self.N) * variation).squeeze()  # Mass of agents
-        self.forces = None  # Forces acting on agents during simulation
+        self.radii = 0.25 * (np.ones(self.N) * variation).squeeze()  # Radii of agents
+
+        self.m = 50 * (np.ones(self.N) * variation).squeeze()  # Mass of agents
+
+        #random_velocity_factor = (1/(self.m * 10)) * velocity_factor  # Generate a random velocity factor
+        #self.velocity_factor = random_velocity_factor * np.ones(self.N)  # Update self.velocity_factor with the random velocity factor for all elements
+        self.velocity_factor = velocity_factor * np.ones(self.N)  # Desired velocity of agents
+
+        self.forces = 0  # Forces acting on agents during simulation
         self.agents_escaped = None  # Number of agents that have escaped the room
         self.v = np.zeros((2, self.N, self.num_steps))  # Velocities of agents
         self.y = np.zeros((2, self.N, self.num_steps))  # Positions of agents
 
         self.room = Room(room, room_size)  # Definition of the simulation room
         self.method = getattr(differential_equation_solver, method)  # Method for solving differential equations
-        self.diff_equ = Differential_Equation(self.N, self.L, self.tau, self.room, self.radii, self.m)  # Differential equation for agent interactions
+        self.diff_equ = Differential_Equation(self.N, self.L, self.time_step, self.room, self.radii, self.m)  # Differential equation for agent interactions
 
     def set_steps(self, steps):
         # Set the number of simulation steps
@@ -76,13 +81,13 @@ class Simulation:
                 pos = [x, y]
             self.y[:, i, 0] = pos
 
-        self.v[:, :, 0] = self.v_des * self.diff_equ.e_t(self.y[:, :, 0])
+        self.v[:, :, 0] = self.velocity_factor * self.diff_equ.e_t(self.y[:, :, 0])
 
     def run(self):
         # Run the simulation by calling the method of integration with the starting positions, differential equation,
-        # number of steps, and delta t = tau
+        # number of steps, and delta t = time_step
         self.y, self.agents_escaped, self.forces = self.method(self.y[:, :, 0], self.v[:, :, 0], self.diff_equ.f,
-                                                               self.num_steps, self.tau, self.room)
+                                                               self.num_steps, self.time_step, self.room)
 
     def show(self, wait_time, sim_size):
         # Display the simulation in pygame

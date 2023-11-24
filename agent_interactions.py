@@ -71,7 +71,7 @@ class Differential_Equation:
                         ``n``, ``t``: 1D-array (normalized vector pointing from
                                       wall to agent, and it's tangential vector)
                         ``nearest`` : 1D-array (point on the wall closest to agent)
-            paramters:  ``i``, ``j``: integers (agent i and wall j)
+            parameters:  ``i``, ``j``: integers (agent i and wall j)
                         ``r``       : 2D-array (positions of all agents)
         """
         temp_wall = self.walls[j, :, :]
@@ -96,9 +96,9 @@ class Differential_Equation:
         # Distance between agent i and agent j
 
     def agent(self, i, j, r, v):
-        """ returns:    ``d``      : float (distance between agend i and j)
+        """ returns:    ``d``      : float (distance between agent i and j)
                         ``n``,``t``: 1D-array (normalized vector pointing from
-                                     agent i to j and it's tangential vector)
+                                     agent i to j, and it's tangential vector)
                         ``dv_t``   : float (difference in velocity)
             parameters: ``i``,``j``: integers (agent i and j)
                         ``r``,``v``: 2D-array (position and velocity of all agents)
